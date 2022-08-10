@@ -2,24 +2,31 @@ package realisation.search.binary;
 
 public class BinarySearch {
 
-    public static int findElement(int[] sortedArray, int keyElement) {
-        int middleElementIndex = sortedArray.length / 2;
-        int firstElementIndex;
-        int lastElementIndex = sortedArray.length - 1;
-        do {
-            if (sortedArray[middleElementIndex] > keyElement) {
-                lastElementIndex = middleElementIndex;
-                middleElementIndex = (lastElementIndex + 1) / 2;
+    public static int binarySearch(int[] arr, int elementToSearch) {
+
+        int firstIndex = 0;
+        int lastIndex = arr.length - 1;
+
+        // условие прекращения (элемент не представлен)
+        while (firstIndex <= lastIndex) {
+            int middleIndex = (firstIndex + lastIndex) / 2;
+            // если средний элемент - целевой элемент, вернуть его индекс
+            if (arr[middleIndex] == elementToSearch) {
+                return middleIndex;
             }
-            if (sortedArray[middleElementIndex] < keyElement) {
-                firstElementIndex = middleElementIndex;
-                middleElementIndex = ((lastElementIndex + firstElementIndex) + 1) / 2;
+
+            // если средний элемент меньше
+            // направляем наш индекс в middle+1, убирая первую часть из рассмотрения
+            else if (arr[middleIndex] < elementToSearch) {
+                firstIndex = middleIndex + 1;
             }
-            if (sortedArray[middleElementIndex] == keyElement) {
-                return middleElementIndex;
+
+            // если средний элемент больше
+            // направляем наш индекс в middle-1, убирая вторую часть из рассмотрения
+            else if (arr[middleIndex] > elementToSearch) {
+                lastIndex = middleIndex - 1;
             }
         }
-        while (sortedArray[middleElementIndex] != keyElement);
         return -1;
     }
 }

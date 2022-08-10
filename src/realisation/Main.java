@@ -8,15 +8,12 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        new Thread(Main::runBinarySearch).start();
-        new Thread(Main::runLinearSearch).start();
 
     }
 
-
     public static void runBinarySearch() {
-        int[] array = Arrays.stream(generateIntArray(1000000, 5)).sorted().toArray();
-        System.out.println(BinarySearch.findElement(array, 5));
+        int[] array = Arrays.stream(generateIntArray(1000, 5)).sorted().toArray();
+        System.out.println(BinarySearch.binarySearch(array, 5));
     }
 
     public static void runLinearSearch() {
