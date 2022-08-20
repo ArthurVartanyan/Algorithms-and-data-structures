@@ -14,7 +14,7 @@ public class Main {
 
     public static void runQuickSort() {
         int[] array = generateIntArray(10, 5);
-        System.out.println(Arrays.toString(Arrays.stream(SelectionSort.quickSortRealisation(array)).toArray()));
+        System.out.println(Arrays.toString(Arrays.stream(SelectionSort.selectionSortRealisation(array)).toArray()));
     }
 
     public static void runBinarySearch() {
