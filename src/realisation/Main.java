@@ -2,6 +2,7 @@ package realisation;
 
 import realisation.search.binary.BinarySearch;
 import realisation.search.linear.LinearSearch;
+import realisation.sort.quick.QuickSort;
 import realisation.sort.selection.SelectionSort;
 
 import java.util.Arrays;
@@ -13,6 +14,12 @@ public class Main {
     }
 
     public static void runQuickSort() {
+        int[] array = generateIntArray(6, 5);
+        System.out.println(Arrays.toString(Arrays
+                .stream(QuickSort.quickSortRealisation(array, 0, array.length - 1)).toArray()));
+    }
+
+    public static void runSelectionSort() {
         int[] array = generateIntArray(10, 5);
         System.out.println(Arrays.toString(Arrays.stream(SelectionSort.selectionSortRealisation(array)).toArray()));
     }
@@ -32,7 +39,7 @@ public class Main {
         int[] array = new int[length];
         Random random = new Random();
         for (int i = 0; i < array.length; i++) {
-            array[i] = random.nextInt();
+            array[i] = random.nextInt() / 100000;
         }
         array[array.length - 1] = keyValue;
         return array;
